@@ -231,7 +231,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   vec2 finalRayDir = rayDir;
   if (mouseInfluence > 0.0) {
     vec2 mouseScreenPos = mousePos * iResolution.xy;
-    vec2 mouseDirection = normalize(mouseScreenPos - rayPos);
+    vec2 diff = mouseScreenPos - rayPos;
+    float len = length(diff);
+    vec2 mouseDirection = len > 0.001 ? diff / len : rayDir;
     finalRayDir = normalize(mix(rayDir, mouseDirection, mouseInfluence));
   }
 
