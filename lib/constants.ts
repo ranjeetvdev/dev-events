@@ -3,15 +3,15 @@ export type EventItem = {
   title: string;
   slug: string;
   location: string;
-  date: string; // e.g., "2025-11-07"
+  date: string; // e.g., "2026-11-07"
   time: string; // e.g., "09:00 AM"
 };
 
 export const events: EventItem[] = [
   {
     image: "/images/event1.png",
-    title: "React Summit US 2025",
-    slug: "react-summit-us-2025",
+    title: "React Summit US 2026",
+    slug: "react-summit-us-2026",
     location: "San Francisco, CA, USA",
     date: "2026-11-07",
     time: "09:00 AM",
@@ -26,16 +26,16 @@ export const events: EventItem[] = [
   },
   {
     image: "/images/event3.png",
-    title: "AWS re:Invent 2025",
-    slug: "aws-reinvent-2025",
+    title: "AWS re:Invent 2026",
+    slug: "aws-reinvent-2026",
     location: "Las Vegas, NV, USA",
     date: "2026-12-01",
     time: "08:30 AM",
   },
   {
     image: "/images/event4.png",
-    title: "Next.js Conf 2025",
-    slug: "nextjs-conf-2025",
+    title: "Next.js Conf 2026",
+    slug: "nextjs-conf-2026",
     location: "Los Angeles, CA, USA (Hybrid)",
     date: "2026-11-12",
     time: "09:30 AM",
