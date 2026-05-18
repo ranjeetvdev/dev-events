@@ -30,7 +30,6 @@ const EventSchema = new Schema<IEvent>(
 
     slug: {
       type: String,
-      required: [true, "Slug is required"],
       unique: true,
       lowercase: true,
       trim: true,
@@ -42,14 +41,14 @@ const EventSchema = new Schema<IEvent>(
       type: String,
       required: [true, "Description is required"],
       trim: true,
-      maxLength: [500, "Description cannot exceed 500 characters"],
+      maxLength: [1000, "Description cannot exceed 1000 characters"],
     },
 
     overview: {
       type: String,
       required: [true, "Overview is required"],
       trim: true,
-      maxLength: [1000, "Overview cannot exceed 1000 characters"],
+      maxLength: [2000, "Overview cannot exceed 2000 characters"],
     },
 
     image: {
@@ -66,14 +65,14 @@ const EventSchema = new Schema<IEvent>(
       type: String,
       required: [true, "Venue is required"],
       trim: true,
-      maxLength: [200, "Venue cannot exceed 200 characters"],
+      maxLength: [500, "Venue cannot exceed 500 characters"],
     },
 
     location: {
       type: String,
       required: [true, "Location is required"],
       trim: true,
-      maxLength: [200, "Location cannot exceed 200 characters"],
+      maxLength: [500, "Location cannot exceed 500 characters"],
     },
 
     date: {
@@ -129,7 +128,7 @@ const EventSchema = new Schema<IEvent>(
       type: String,
       required: [true, "Organizer is required"],
       trim: true,
-      maxLength: [100, "Organizer cannot exceed 100 characters"],
+      maxLength: [1000, "Organizer cannot exceed 1000 characters"],
     },
 
     tags: {
