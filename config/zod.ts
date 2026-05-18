@@ -1,6 +1,7 @@
 import * as z from "zod";
 
-const timeRegex = /^(\d{1,2}):(\d{2})(\s*(AM|PM))?$/i;
+const timeRegex =
+  /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$|^([01]?[0-9]|2[0-3]):[0-5][0-9]$/i;
 
 export const eventSchema = z.object({
   title: z

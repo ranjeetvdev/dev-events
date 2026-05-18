@@ -110,7 +110,7 @@ export const GET = async () => {
     return NextResponse.json(
       {
         message: "Event fetching failed",
-        error,
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       {
         status: 500,
