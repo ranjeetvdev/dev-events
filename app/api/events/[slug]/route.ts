@@ -34,7 +34,7 @@ export const GET = async (
     if (!event) {
       return NextResponse.json(
         {
-          message: `Event with slug '${sanitizedSlug}' not found`,
+          message: `Event not found`,
         },
         {
           status: 404,
