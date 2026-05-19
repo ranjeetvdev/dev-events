@@ -1,8 +1,13 @@
 import ExploreBtn from "@/components/ExploreBtn";
-import events from "@/lib/constants";
 import EventCard from "@/components/EventCard";
+import { IEvent } from "@/database/event.model";
 
-const Home = () => {
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+const Home = async () => {
+  const response = await fetch(`${BASE_URL}/api/events`);
+  const { events } = await response.json();
+
   return (
     <section aria-label="Developer events hub introduction">
       <h1 className="text-center">
@@ -21,7 +26,7 @@ const Home = () => {
         <ul id="events" className="events">
           {events &&
             events.length > 0 &&
-            events.map((event) => (
+            events.map((event: IEvent) => (
               <li key={event.slug} className="list-none">
                 <EventCard {...event} />
               </li>

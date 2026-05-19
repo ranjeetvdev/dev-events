@@ -30,7 +30,6 @@ const EventSchema = new Schema<IEvent>(
 
     slug: {
       type: String,
-      unique: true,
       lowercase: true,
       trim: true,
       match: [/^[a-z0-9-]+$/, "Invalid slug format"],
