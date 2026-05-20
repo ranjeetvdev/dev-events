@@ -1,10 +1,14 @@
 import ExploreBtn from "@/components/ExploreBtn";
 import EventCard from "@/components/EventCard";
+import { cacheLife } from "next/cache";
 
 import Event, { IEvent } from "@/database/event.model";
 import connectDB from "@/lib/mongodb";
 
 const Home = async () => {
+  "use cache";
+  cacheLife("hours");
+
   let events: IEvent[] = [];
   let hasError = false;
 
