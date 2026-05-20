@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import BookEvent from "@/components/BookEvent";
 import Event, { IEvent } from "@/database/event.model";
 import connectDB from "@/lib/mongodb";
+import EventCard from "@/components/EventCard";
+import { getSimilarEventsBySlug } from "@/lib/actions/event.actions";
 
 const EventDetailItem = ({
   icon,
@@ -69,6 +71,8 @@ const EventDetailsPage = async ({
   } = event;
 
   const bookings = 10;
+
+  const similarEvents: IEvent[] = await getSimilarEventsBySlug(slug);
 
   const formattedDate = new Date(date).toLocaleDateString("en-IN", {
     day: "numeric",
@@ -148,6 +152,18 @@ const EventDetailsPage = async ({
             <BookEvent />
           </div>
         </aside>
+      </div>
+
+      {/* Similar Events */}
+      <div className="flex w-full flex-col gap-4 pt-20">
+        <h2>Similar Events</h2>
+
+        <div className="events">
+          {similarEvents.length > 0 &&
+            similarEvents.map((similarEvent: IEvent) => (
+              <EventCard key={similarEvent.title} {...similarEvent} />
+            ))}
+        </div>
       </div>
     </section>
   );
