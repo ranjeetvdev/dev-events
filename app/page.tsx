@@ -2,24 +2,24 @@ import ExploreBtn from "@/components/ExploreBtn";
 import EventCard from "@/components/EventCard";
 import { cacheLife } from "next/cache";
 
-import Event, { IEvent } from "@/database/event.model";
-import connectDB from "@/lib/mongodb";
+// import Event, { IEvent } from "@/database/event.model";
+// import connectDB from "@/lib/mongodb";
+import events from "@/lib/constants";
 
 const Home = async () => {
   "use cache";
   cacheLife("hours");
 
-  let events: IEvent[] = [];
+  // let events: IEvent[] = [];
   let hasError = false;
 
   try {
-    await connectDB();
-
-    events = await Event.find({
-      date: { $gte: new Date() },
-    })
-      .sort({ date: 1 })
-      .lean<IEvent[]>();
+    // await connectDB();
+    // events = await Event.find({
+    //   date: { $gte: new Date() },
+    // })
+    //   .sort({ date: 1 })
+    //   .lean<IEvent[]>();
   } catch (error) {
     hasError = true;
     console.error("Error fetching events:", error);
@@ -46,7 +46,7 @@ const Home = async () => {
           <ul id="events" className="events">
             {events.map((event) => (
               <li key={event.slug} className="list-none">
-                <EventCard {...event} />
+                <EventCard {...event} date={new Date(event.date)} />
               </li>
             ))}
           </ul>
