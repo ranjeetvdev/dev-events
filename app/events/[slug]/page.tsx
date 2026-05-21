@@ -11,7 +11,7 @@ const EventDetailsPage = async ({
 
   return (
     <main>
-      <Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
         <EventDetails params={slug} />
       </Suspense>
     </main>
